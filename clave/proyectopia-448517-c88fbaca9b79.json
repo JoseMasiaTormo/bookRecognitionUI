@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "proyectopia-448517",
+  "private_key_id": "c88fbaca9b7985fdcff96915025a6e91a8172986",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC/RZQKVylLG27z\nBxVcjofMTQafkFxx+QubTy0PW6aiexj3QR4DnmmETHY/HYZx4oSNcZSrVwFVw5g3\n0IG8dHA61Akk3IVqk2I6FRZRWyyo5VtE3afuhiytbcWJpmHOp25N6iBRSIBjNqKL\n2CCc/2AKXlxwDHaHkJBhz4/Pmf2ri2YBz86u3yUPr0pYNu5eHGKPtPKF810I2Da8\nu2A4gByEouhyst4jEik8wOZu9Ufw5Vi5pSIc1j8YmK6MqVyUBVoPk8K+81zNSceF\n7Bg1gtVXc62xw+pk5v50PCGL4Zi2rZRpL85EaAd+JJbdZAkyH6tmq5X67Lsv7K99\nJQqSC/z1AgMBAAECggEAEqOiphFRXlbZjIhTrhXbqO6WpyUHxTmKRoPENdtuFSZe\ny/WGCb89tB1JZqQnbmCvHyOC4+GSKTvq0QGaKvXD3A++pl9xBu4+478bUilK5FiZ\neNAK5eUgZHQujFfw7xUE3EXlCVbB4Ck6VNtmbjY6szf31Rl50YMmdsmlz4rHnBhJ\n1pkwl9EN7je/BXe3SQj2P2jf7T7uYZkTJQHf+QNcH1m+FMxxJ35pjyaNqZATjXOQ\n8RKQ/MgwYJfnNPvjuYMSfzdROBmRLvt1+8mh1plgYBPa/HPqJ2zALwx6yHEnTa6n\nZFV+CdTYfsJKQ9BRd2IpjSOSm+mnOMLPL7LBkRrt8QKBgQDoI0PUwD3MJlhogHKj\nFIkDz17q2AYI+158v3Fv3NGk7qvbarOrviVPlryXiMNwfCnBm+T33sRnRpMVxZV3\n1Wo7ENpwQu/CUW8CjL1ON+pIOzbeK9ex++s3zNKTC0KA8a1jfSGGOYEtNy+vemkG\nZfmWTBRmm0hr1KwRXHe+Ls/gDQKBgQDS7uuR/h311OOhKGhKNxEVgH8aagJtgVJV\nbxuun7tULsXUbiGhoaaPTyYqx0KIP2+DnAllp2KBv18NsFNrT/XuqVnsbrbuLany\no8cqWDftrQOB2NJSSoXnK6ouAIOGXpD+Wx1buy2g/f3IGLNUGdPU4Fe9xkmxhuc7\nMtuLm0XuiQKBgB924DPPFtE8BVGsz10BZIzqp6/nNfIzuBvqiwKhiJz1aL/l15KY\nxE/kW42ikPMHMVW3vrJGNJLXAwq5bEgA2lRFNYZv3DWXehd7YhFfDNdbh1VX1fWe\n8sPudEBQD2SQ3XKVvFyIINUzHLiJPAENA2Z2y3EY7RkIi4YS5XwWtkBlAoGAZgVt\nJvWz4/0OBBqZJpwvxSibUVlIx1IvUmclCnbzkin1QWPrHFQlTVdI7JPn2CJme09z\nNBmbiYnYHbTVBChumPqMJdD+5YBsnJEeeZqlom12Ls2CHI8y6Laz3wAcnVcL5hqH\nvqBv11hB8RARXHIJhQLlLULEzfqjyHw2t/VoA5ECgYB+sO6872FPNzYzH6OYGrjp\necNecXMNIvz6leIBMIWBqZkbzMHZdLdU8ilb/d/zZfZXr7HhQtBIgjK1vDOOKl7x\n6WmlO2f1c67eMjMu6emF67MvwQWSmAc8qSVhhLUq3qJ89bqWs+O83S011sP/X0Rt\nTf+h1dhND5xvpU+8esb12g==\n-----END PRIVATE KEY-----\n",
+  "client_email": "proyecto-pia@proyectopia-448517.iam.gserviceaccount.com",
+  "client_id": "105431046147596644894",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/proyecto-pia%40proyectopia-448517.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
