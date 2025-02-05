@@ -1,6 +1,7 @@
 import cv2
 import tkinter as tk
 from tkinter import Label, Canvas, Frame, Scrollbar
+from tkinter.messagebox import showinfo, showerror, showwarning
 from PIL import Image, ImageTk
 from google.cloud import vision
 from google.oauth2 import service_account
@@ -9,7 +10,7 @@ import requests
 import json
 
 # Ruta al archivo JSON de credenciales, usa el tuyo propio
-GOOGLE_CREDENTIALS_PATH = "clave/tu_archivo"
+GOOGLE_CREDENTIALS_PATH = "clave/proyectopia-448517-72313cbac263.json"
 
 # Cargar las credenciales desde el archivo
 with open(GOOGLE_CREDENTIALS_PATH, "r") as credentials_file:
@@ -83,32 +84,44 @@ class BookRecognitionApp:
         # Crear un label para el título
         self.title_label = Label(root, text="Título del libro: ---", font=("Arial", 16))
         self.title_label.pack(pady=5)
-
-        # Crear un contenedor de desplazamiento para la sinopsis
-        self.scroll_canvas = Canvas(root)
-        self.scroll_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=10, pady=5)
-
-        self.scrollbar = Scrollbar(root, orient=tk.VERTICAL, command=self.scroll_canvas.yview)
-        self.scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
-
-        self.scroll_frame = Frame(self.scroll_canvas)
-        self.scroll_canvas.create_window((0, 0), window=self.scroll_frame, anchor="nw")
+        
+        # Crear un marco con borde para la sinopsis
+        self.synopsis_frame = Frame(root, relief="solid", borderwidth=2, padx=5, pady=5)
+        self.synopsis_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=10, pady=5)
+        
+        # Crear el área de desplazamiento dentro del marco
+        self.scroll_canvas = Canvas(self.synopsis_frame)
+        self.scroll_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        
+        # Scrollbar a la izquierda de los botones
+        self.scrollbar = Scrollbar(self.synopsis_frame, orient=tk.VERTICAL, command=self.scroll_canvas.yview)
+        self.scrollbar.pack(side=tk.LEFT, fill=tk.Y)
+        
         self.scroll_canvas.configure(yscrollcommand=self.scrollbar.set)
 
-        self.scroll_frame.bind("<Configure>", lambda e: self.scroll_canvas.configure(scrollregion=self.scroll_canvas.bbox("all")))
+        # Crear el frame interno para el contenido de la sinopsis
+        self.scroll_frame = Frame(self.scroll_canvas)
+        self.scroll_canvas.create_window((0, 0), window=self.scroll_frame, anchor="nw")
 
+        # Sinopsis dentro del marco
         self.synopsis_label = Label(self.scroll_frame, text="Sinopsis: ---", font=("Arial", 12), wraplength=500, justify="left")
         self.synopsis_label.pack()
+        
+        # Ajustar scroll
+        self.scroll_frame.bind("<Configure>", lambda e: self.scroll_canvas.configure(scrollregion=self.scroll_canvas.bbox("all")))
 
         # Crear un marco para los botones
         self.button_frame = Frame(root)
-        self.button_frame.pack(pady=10)
+        self.button_frame.pack(side=tk.RIGHT,pady=10)
 
         capture_button = tk.Button(self.button_frame, text="Identificar Libro", command=self.process_frame)
-        capture_button.pack(side=tk.LEFT, padx=5)
+        capture_button.pack(fill=tk.X, pady=4)
+        
+        download_button = tk.Button(self.button_frame, text="Descargar Sinopsis", command=self.download_synopsis)
+        download_button.pack(fill=tk.X, pady=4)
 
         quit_button = tk.Button(self.button_frame, text="Salir", command=self.stop)
-        quit_button.pack(side=tk.RIGHT, padx=5)
+        quit_button.pack(fill=tk.X, pady=4)
 
         # Configurar la cámara
         self.cap = cv2.VideoCapture(0)
@@ -153,6 +166,25 @@ class BookRecognitionApp:
                 self.synopsis_label.config(text="Sinopsis: No se encontró información del libro")
 
         threading.Thread(target=process).start()
+        
+    # Función para descargar la sinopsis
+    def download_synopsis(self):
+        book_title = self.title_label.cget("text").replace("Título: ", "").strip()
+        synopsis = self.synopsis_label.cget("text").replace("Sinopsis: ", "").strip()  
+        
+        if book_title == "---" or synopsis == "---":
+            showerror("ERROR", "No hay información en la sinopsis.")
+            return
+        
+        filename = f"txts/{book_title}.txt"
+        try:
+            with open(filename, "w", encoding="utf-8") as file:
+                file.write(f"Título: {book_title}\n\n")
+                file.write(f"Sinopsis:\n{synopsis}")
+                
+            showinfo("Sinopsis Guardada", f"Sinopsis guardada como: {book_title}")
+        except Exception as e:
+            showerror("ERROR", f"Error al guardar la sinopsis: {e}")
 
     def stop(self):
         self.running = False
